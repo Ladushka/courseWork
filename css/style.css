@@ -1,0 +1,33 @@
+/* Tools */
+/* Vendor */
+/* variables, mixens, funstions and exturnal tools of this theme */
+/* Base */
+body {
+ /* background-image: url("../images/bg.jpg");*/
+background-color: white;
+font-family:"Courier New", Courier, monospace;
+font-weight:bold;
+  }
+.titleGraphics{
+	font-family: "Courier New", Courier, monospace;
+	font-weight:bold;
+}
+/* Layout */
+/* Module */
+/* State */
+/*--  320px  --*/
+/* Smartphones */
+/*--  360px  --*/
+/*--  480px  --*/
+/* Landscape phones and smaller */
+/*--  600px  --*/
+/*--  768px  --*/
+/* Portrait tablets and small desktops */
+/*--  992px  --*/
+/* Portrait tablets and medium desktops */
+/*--  1200px  --*/
+/* Large desktops and laptops */
+/*--  1600px  --*/
+/*--  1824px  --*/
+
+/*# sourceMappingURL=style.css.map */
