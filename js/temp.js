@@ -8,16 +8,19 @@ function ChartElement(day, time, temperature) {
 }
 
 function parse(str) {
-    var types = [];
-    var line = str.split('|').forEach(function (item, i, line) {
-        types = item.split(' ');
-        state.table[i] = new ChartElement(types[0], types[1], types[3]);
-    })
+    var types = [],
+     line = str.split('|').forEach(function (item, i, line) {
+         types = item.split(' ');
+         state.table[i] = new ChartElement(types[0], types[1], types[3]);
+     })
 
     return state.table;
 }
 function day(arr) {
-    var temp = [], inputDay = document.getElementById("day"), beginTime = document.getElementById("begin"), endTime = document.getElementById("end");
+    var temp = [],
+    inputDay = document.getElementById('day'),
+    beginTime = document.getElementById('begin'),
+    endTime = document.getElementById('end');
 
     if (inputDay.value && beginTime.value && endTime.value) {
         temp = arr.filter(function (item, i, arr) {
@@ -25,24 +28,21 @@ function day(arr) {
             { return item; }
         })
     }
-    else {
-        if (inputDay.value && beginTime.value) {
-            temp = arr.filter(function (item, i, arr) {
-                if (item.day === inputDay.value && item.time >= beginTime.value) { return item; }
-            })
-        }
-        else {
-            if (inputDay.value) {
-                temp = arr.filter(function (item, i, arr) {
-                    if (item.day === inputDay.value) { return item; }
-                })
-            }
-        }
+    else if (inputDay.value && beginTime.value) {
+        temp = arr.filter(function (item, i, arr) {
+            if (item.day === inputDay.value && item.time >= beginTime.value) { return item; }
+        })
     }
-    return !temp.length ? temp = arr.filter(function (item, i, arr) { return i <= 20; }) : temp
+    else if (inputDay.value) {
+        temp = arr.filter(function (item, i, arr) {
+            if (item.day === inputDay.value) { return item; }
+        })
+    }
+
+    return temp.length ? temp : temp = arr.filter(function (item, i, arr) { return i <= 20; });
 }
 function draw() {
-    var ctx = document.getElementById("myChart"), myChart, arrayOfTime = [], arrayOfTemperature = [];
+    var ctx = document.getElementById('myChart'), myChart, arrayOfTime = [], arrayOfTemperature = [];
     state.table = day(state.table);
     state.table.forEach(function (item, i, arr) {
         arrayOfTime[i] = item.time;
@@ -55,7 +55,7 @@ function draw() {
             datasets: [{
                 label: 'valueTemperature',
                 data: arrayOfTemperature,
-                backgroundColor: "rgba(75,192,192,0.4)"
+                backgroundColor: 'rgba(75,192,192,0.4)'
             }]
 
         },
@@ -74,7 +74,6 @@ function draw() {
 
 function load() {
     var mydata = JSON.parse(data);
-    console.log(mydata);
     var str = mydata[0].file;
     parse(str);
 }
